@@ -10,23 +10,53 @@
     }
 
     body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background-image: url('backgrounds/field.png'); /* default */
+      background-size: contain;      /* keep full image visible */
+      background-repeat: no-repeat;
+      background-position: center;
       background-color: black;
+      
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+    }
+    
+    .content {
+      margin-top: 20px;
     }
 
-    img.fullscreen {
-      max-width: 100%;
-      max-height: 100%;
+    .content img {
+      max-width: 300px;
+      margin-top: 20px;
+    }
+
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <h1>Hello world!</h1>
-  <p>My website is live on GitHub Pages.</p>
-  <p>please work</p>
-  <img src="backgrounds/field.png" class="fullscreen">
-  <img src="pets1/fish.png">
+<div class="content">
+    <h1>Hello world!</h1>
+    <p>Click a button to change the background!</p>
+
+    <button onclick="changeBackground('backgrounds/field.png')">Field</button>
+    <button onclick="changeBackground('backgrounds/desert.png')">Desert</button>
+    <button onclick="changeBackground('backgrounds/lava_mountain.png')">Mountain</button>
+
+    <img src="pets1/fish.png" alt="Fish">
+  </div>
+<script>
+    function changeBackground(imagePath) {
+      document.body.style.backgroundImage = `url('${imagePath}')`;
+    }
+  </script>
 </body>
 </html>
