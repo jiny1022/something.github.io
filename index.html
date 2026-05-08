@@ -72,7 +72,7 @@
   </div>
 
   <script>
-    let fogOn = false;
+    let fogOn = true;
 
     function changeBackground(imagePath) {
       document.getElementById('background').style.backgroundImage = `url('${imagePath}')`;
@@ -82,7 +82,7 @@
       fogOn = !fogOn;
       const bg = document.getElementById('background');
       if (fogOn) {
-        bg.style.filter = 'blur(5px) brightness(80%)';
+        bg.style.filter = 'blur(5px)';
       } else {
         bg.style.filter = 'none';
       }
