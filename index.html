@@ -45,9 +45,9 @@
     }
 
     button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
+      border: none;
+      background: none;
+      padding: 0;
       cursor: pointer;
     }
   </style>
@@ -64,7 +64,9 @@
     <button onclick="changeBackground('backgrounds/field.png')">Field</button>
     <button onclick="changeBackground('backgrounds/desert.png')">Desert</button>
     <button onclick="changeBackground('backgrounds/lava_mountain.png')">Mountain</button>
-    <button onclick="toggleFog()">Toggle Fog</button>
+    <button onclick="toggleFog()">
+      <img src="buttons/play">
+    </button>
 
     <img src="pets1/fish.png" alt="Fish">
   </div>
