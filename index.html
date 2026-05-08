@@ -10,22 +10,32 @@
     }
 
     body {
-      background-image: url('backgrounds/field.png'); /* default */
-      background-size: contain;      /* keep full image visible */
-      background-repeat: no-repeat;
-      background-position: center;
-      background-color: black;
-      
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
       font-family: Arial, sans-serif;
       color: white;
       text-align: center;
+      position: relative; /* for background positioning */
+      overflow: hidden;   /* prevent scrollbars from background blur */
     }
-    
+
+    /* Background div */
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: url('backgrounds/field.png'); /* default */
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: black;
+      z-index: -1;  /* behind everything */
+      transition: filter 0.5s ease; /* smooth fog toggle */
+    }
+
+    /* Foreground content */
     .content {
+      position: relative; /* keep above background */
       margin-top: 20px;
     }
 
@@ -43,7 +53,11 @@
   </style>
 </head>
 <body>
-<div class="content">
+  <!-- Background div -->
+  <div id="background"></div>
+
+  <!-- Foreground content -->
+  <div class="content">
     <h1>Hello world!</h1>
     <p>Click a button to change the background!</p>
 
@@ -54,19 +68,21 @@
 
     <img src="pets1/fish.png" alt="Fish">
   </div>
-<script>
-  let fogOn = false;
-  
-  function changeBackground(imagePath) {
-      document.body.style.backgroundImage = `url('${imagePath}')`;
-  }
 
-  function toggleFog() {
-      fogOn = !fogOn; // toggle state
+  <script>
+    let fogOn = false;
+
+    function changeBackground(imagePath) {
+      document.getElementById('background').style.backgroundImage = `url('${imagePath}')`;
+    }
+
+    function toggleFog() {
+      fogOn = !fogOn;
+      const bg = document.getElementById('background');
       if (fogOn) {
-        document.body.style.filter = 'blur(5px) brightness(80%)';
+        bg.style.filter = 'blur(5px) brightness(80%)';
       } else {
-        document.body.style.filter = 'none';
+        bg.style.filter = 'none';
       }
     }
   </script>
